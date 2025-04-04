@@ -49,7 +49,7 @@ terraform-mimirtool/
 
 1. **Clone o repositório**:
    ```bash
-   git clone [<URL_DO_REPOSITORIO>](https://github.com/Tech-Preta/terraform-mimirtool.git)
+   git clone https://github.com/Tech-Preta/terraform-mimirtool.git
    cd terraform-mimirtool
    ```
 
@@ -75,6 +75,32 @@ terraform-mimirtool/
    ```bash
    terraform apply
    ```
+```mermaid
+sequenceDiagram
+  participant Dev as Desenvolvedor
+  participant GH as GitHub
+  participant WF as Workflow (terraform.yml)
+  participant TF as Terraform
+  Dev->>GH: Push para a branch "main"
+  GH->>WF: Aciona workflow de CI
+  WF->>WF: Checkout do código com actions/checkout@v3
+  WF->>WF: Setup do Terraform (v1.4.6) com hashicorp/setup-terraform@v2
+  WF->>TF: Executa "terraform init"
+  WF->>TF: Executa "terraform validate"
+  WF->>TF: Executa "terraform plan"
+  WF-->>GH: Reporta status do CI
+```
+
+```mermaid
+sequenceDiagram
+  participant S as Script (alerts.sh)
+  participant FS as Sistema de Arquivos
+  participant TF as Arquivo terraform.tfvars
+  S->>FS: Executa comando "find" para localizar arquivos YAML
+  FS-->>S: Retorna lista de arquivos YAML de regras
+  S->>TF: Atualiza variável "alertmanager_rules_files" em terraform.tfvars
+```
+   
 
 ## Testes
 
