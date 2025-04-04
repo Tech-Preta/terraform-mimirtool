@@ -1,0 +1,18 @@
+namespace: default
+groups:
+    - name: example-rules
+      rules:
+        - alert: upDownDemo
+          expr: up == 0
+          labels:
+            severity: critical
+          annotations:
+            description: instance Down demo
+            external__url: https://www.google.com
+            runbook_url: https://www.google.com
+            summary: instance Down demo
+      source_tenants:
+        - o11y-pmt-pre
+        - o11y-pmt-prod
+        - core-pmt-pre
+        - core-pmt-prod
