@@ -1,0 +1,18 @@
+name: Resposta Automática a Issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  resposta-automatica:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: derekprior/add-autoresponse@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.USER_TOKEN }}
+      with:
+        respondableId: ${{ github.event.issue.node_id }}
+        response: "Obrigado @${{ github.event.issue.user.login }} por criar esta issue. Se esta issue é sobre um bug, pergunta sobre o produto ou solicitação de funcionalidade: você pode me enviar um e-mail para contato@nataliagranato.xyz"
+        author: ${{ github.event.issue.user.login }}
