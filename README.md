@@ -1,15 +1,30 @@
-# Repository Sample
+# Criando regras de alertas e configurações para o Alertmanager do Mimir
 
-Este é um repositório de exemplo criado para demonstrar o uso do GitHub. 
+# Estrutura de diretórios
 
-## Uso
+```plaintext
 
-Ao acessar o repositório, no canto superior direito clique em `Use this template` para começar.
+terraform-mimirtool/
+├── modules/
+│   └── mimirtool/
+│       ├── main.tf
+│       ├── variables.tf
+│       └── outputs.tf
+├── environments/
+│   ├── preprod/
+│   │   ├── terraform.tfvars
+│   │   └── backend.hcl
+│   └── prod/
+│       ├── terraform.tfvars
+│       └── backend.hcl
+├── scripts/
+│   └── generate.sh
+├── main.tf
+├── variables.tf
+└── README.md
 
-## Contato
+```
 
-Para mais informações, entre em contato através do [GitHub Sponsors](https://github.com/sponsors/Tech-Preta).
+```
 
----
-
-Feito com ❤️ por [Natália Granato](https://github.com/nataliagranato).
+```
