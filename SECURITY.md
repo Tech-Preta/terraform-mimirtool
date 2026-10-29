@@ -43,4 +43,3 @@ Este projeto segue as seguintes práticas:
 - CodeQL Analysis
 - Snyk
 - FOSSA
-- Scorecard Supply-Chain Security
